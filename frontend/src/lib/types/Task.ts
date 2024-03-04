@@ -3,7 +3,7 @@ export type Task = {
     title: string;
     description: string;
     duration: number;
-    dueDate: string;
     prio: string;
+    dueDate: string;
     done: boolean;
 }

@@ -26,4 +26,11 @@ public class Task {
     private LocalDate dueDate;
     private Priority prio;
     private boolean done;
+
+    public Task(String title, String description, Integer duration, Priority prio) {
+        this.title = title;
+        this.description = description;
+        this.duration = duration;
+        this.prio = prio;
+    }
 }

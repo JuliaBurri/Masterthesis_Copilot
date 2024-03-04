@@ -1,5 +1,4 @@
 package com.masterthesis.backend.controller;
-
 import com.masterthesis.backend.model.Priority;
 import com.masterthesis.backend.repository.TaskRepository;
 import com.masterthesis.backend.model.Task;
@@ -17,6 +16,10 @@ public class TaskController {
         this.repository = repository;
     }
 
+    /**
+     * Get all tasks
+     * @return List of all tasks
+     */
     @GetMapping()
     public List<Task> getAll() {
         return repository.findAll();
@@ -37,9 +40,8 @@ public class TaskController {
 
     /* User Story 1: As a user I want to add a new task to my task list
      *TODO: Add request method to create new task
-     * ACCEPTANCE CRITERIA: The task is added to the task list
-     *                      The task is not done
-     *                      The task has a title, description, duration, priority and due date
+     * ACCEPTANCE CRITERIA: The task is not done
+     *                      The task has a title, description, duration and priority
      *                      The dueDate is automatically set to the current date
      *                      The function is documented as a Javadoc comment
      *                      The function is tested

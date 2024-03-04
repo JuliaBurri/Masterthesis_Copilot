@@ -7,7 +7,7 @@ The project is about a TODO Application for work tasks.
 Before you start with the tasks
 
 - Clone this repository `git clone https://github.com/JuliaBurri/Masterthesis.git`.
-- Create a new branch `git checkout -b [surname_firstname]`.
+- Create a new branch `git checkout -b [your_name]`.
 - Go to the frontend folder `cd .\frontend\`
 - Install dependencies `npm install`
 
@@ -17,11 +17,12 @@ These are your tasks that should be completed without using Copilot. The tasks c
 ### 1. User Story: As a user, I want to add a new task to my to-do list.
 #### Backend
 - Create a request method inside TaskController.java that adds a new task.
+- The task should automatically be set to "not done".
 - The due date of a newly created Task should always be set to the current date.
 - Document your method in form of a Javadoc comment (an example for that can be found in the code).
 - Inside the TaskControllerTest.java, write a test for your method.
 #### Frontend
-- Create a component to input all the requiered data for a task (Title, Description, Duration, Due Date, Priority).
+- Create a component to input all the required data for a task (Title, Description, Duration).
 - The grid should be responsive. If the screen gets too small, the two green components should be displayed among each other.
 - Call the API to actually add a new task.
 - Update the to-do list.

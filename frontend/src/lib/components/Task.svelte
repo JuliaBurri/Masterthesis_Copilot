@@ -5,7 +5,8 @@
     export let task: Task;
 
     function checkTask(task: Task) {
-        // TODO: Call API so mark task as done
+        // TODO: User Story 2 - Call API so mark task as done
+        console.log("Task checked: " + task.title);
     }
 </script>
 

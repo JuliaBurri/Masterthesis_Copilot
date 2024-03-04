@@ -6,8 +6,13 @@ export const load = (async ({fetch}) => {
         return await taskResponse.json();
     };
 
+    const fetchPrios = async () => {
+        const taskResponse = await fetch('http://localhost:8080/api/tasks/priorities');
+        return await taskResponse.json();
+    };
 
     return {
         tasks: await fetchTasks(),
+        priorities: await fetchPrios()
     };
 }) satisfies PageLoad;
