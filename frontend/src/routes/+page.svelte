@@ -5,11 +5,28 @@
     $: tasks = data.tasks;
     $: priorities = data.priorities;
 
-    $: priority = undefined;
+    $: title = "";
+    $: description = "";
+    $: duration = 30;
+    $: priority = "LOW";
 
     async function addTask() {
-        // TODO: User Story 1 - Call api to add task
-        console.log("Add Task")
+        let newTask = {
+            title: title,
+            description: description,
+            duration: duration,
+            prio: priority
+        }
+        const res = await fetch('http://localhost:8080/api/tasks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newTask)
+        })
+
+        //update tasks list by adding res.json() to the tasks list
+        tasks = [...tasks, await res.json()]
     }
 
     async function schedule() {
@@ -33,6 +50,9 @@
     <div class="add-task-container">
         <h1>Add a new Task</h1>
         <!-- TODO: User Story 1 - Add input fields for title, description, duration -->
+        <input type="text" placeholder="Task title" bind:value={title}/>
+        <input type="text" placeholder="Task description" bind:value={description}/>
+        <input type="number" placeholder="Task duration"bind:value={duration}/>
         <select bind:value={priority}>
             <option value="" disabled selected>Select task priority</option>
             {#each priorities as p}
@@ -48,8 +68,8 @@
 <style>
     .container {
         display: grid;
-        /* TODO: User Story 1 - this grid should be responsive */
-        grid-template-columns: 2fr 1fr;
+        /* this grid colums should be responsive */
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
         gap: 24px;
     }
 
@@ -83,6 +103,12 @@
         font-size: 14px;
         cursor: pointer;
         text-transform: uppercase;
+    }
+
+    input {
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
     }
 
     select {
