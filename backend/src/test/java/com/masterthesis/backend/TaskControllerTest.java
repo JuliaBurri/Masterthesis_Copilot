@@ -25,8 +25,8 @@ public class TaskControllerTest {
 
     @Test
     public void getTaskByIdTest() {
-        assert (this.taskController.getTaskById(2L).getTitle().equals("Have lunch"));
-        assert (this.taskController.getTaskById(2L).getDescription().equals("cook noodles"));
+        assert (this.taskController.getTaskById(102L).getTitle().equals("Have lunch"));
+        assert (this.taskController.getTaskById(102L).getDescription().equals("cook noodles"));
     }
 
     @Test
