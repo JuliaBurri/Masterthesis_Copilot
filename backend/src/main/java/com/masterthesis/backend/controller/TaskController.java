@@ -2,9 +2,14 @@ package com.masterthesis.backend.controller;
 import com.masterthesis.backend.model.Priority;
 import com.masterthesis.backend.repository.TaskRepository;
 import com.masterthesis.backend.model.Task;
+
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -38,14 +43,20 @@ public class TaskController {
                 .orElseThrow(() -> new TaskNotFoundException(id));
     }
 
-    /* User Story 1: As a user I want to add a new task to my task list
-     *TODO: Add request method to create new task
-     * ACCEPTANCE CRITERIA: The task is not done
-     *                      The task has a title, description, duration and priority
-     *                      The dueDate is automatically set to the current date
-     *                      The function is documented as a Javadoc comment
-     *                      The function is tested
+    
+    /**
+     * Add a task
+     *
+     * @param task the task to add
+     * @return the id of the added task
      */
+    @PostMapping()
+    public Long addTask(@RequestBody Task task) {
+        task.setDueDate(LocalDate.now());
+        task.setDone(false);
+        return repository.save(task).id;
+    }
+    
 
     /* User story 2: As a user I want to set a task to done
      * TODO: Add request method to update existing task / set Task to done
